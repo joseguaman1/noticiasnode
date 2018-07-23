@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/noticias/suma" method="POST">
+        <label>Ingrese A</label>
+        <input type="number" value="0" id="a" name="a"/>
+        <label>Ingrese B</label>
+        <input type="number" value="0" id="b" name="b"/>
+        <input type="submit" value="Sumar"/>
+    </form>
+  </body>
+</html>

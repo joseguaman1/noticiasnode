@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Registro de admiistrador</h4>
+    </div>
+    <div class="card-block">
+        <form method="POST" action="/registro/administrador">
+            <div class="form-group">
+                <label for="txt_nombre" class="form-control-label">Administrador:</label>
+                <input type="text" class="form-control" id="txt_nombre" name="txt_nombre"/>
+            </div>
+            <div class="form-group">
+                <label for="txt_correo" class="form-control-label">Correo:</label>
+                <input type="text" class="form-control" id="txt_correo" name="txt_correo"/>
+            </div>
+            <div class="form-group">
+                <label for="txt_clave" class="form-control-label">Clave:</label>
+                <input type="password" class="form-control" id="txt_clave" name="txt_clave"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" >Cancelar</button>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>
