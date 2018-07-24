@@ -14,8 +14,9 @@
         <link rel="stylesheet" href="/stylesheets/main.css" />
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"/>
-        
-        
+        <script src="/javascripts/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.bundle.min.js"></script>
     </head>
     <body class="is-preload">
 
@@ -43,6 +44,7 @@
         </nav>
 
         <!-- Banner -->
+        <% if (login == false) { %>
         <section id="banner">
             <div class="inner">
                 <h1>Industrious</h1>
@@ -51,7 +53,7 @@
             </div>
             <video autoplay loop muted playsinline src="images/banner.mp4"></video>
         </section>
-
+        <% } %>
         <!-- Highlights -->
         <section class="wrapper">
             <% if (login == false) { %>
@@ -215,12 +217,11 @@
         </footer>
 
         <!-- Scripts -->
-        <script src="/javascripts/jquery.min.js"></script>
+        
         <script src="/javascripts/browser.min.js"></script>
         <script src="/javascripts/breakpoints.min.js"></script>
         <script src="/javascripts/util.js"></script>
         <script src="/javascripts/main.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.bundle.min.js"></script>
+        
     </body>
 </html>

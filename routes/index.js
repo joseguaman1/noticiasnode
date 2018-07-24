@@ -7,6 +7,9 @@ var pruebasi = require('../controllers/pruebasimple');
 var administrador = require('../controllers/AdministradorController');
 var administradorController = new administrador();
 
+var noticia = require('../controllers/NoticiaController');
+var noticiaController = new noticia();
+
 var admin = require('firebase-admin');
 
 /* GET home page. */
@@ -18,28 +21,13 @@ router.get('/', function (req, res, next) {
     } else {
         res.render('templates/app', {title: 'Principal', login: login});
     }
-
-    //
 });
 
 router.get('/noticias/login', function (req, res, next) {
     res.render('login');
 });
 
-router.post('/noticias/login', function (req, res, next) {
-    var email = req.body.email;
-    var clave = req.body.pass;
-    if (email == 'a@admin.com' && clave == '1234') {
-        req.session.user = 'Administrador';
-        //req.session.save();
-        console.log(req.session.user + " *********** ");
-        req.session.cookie.expires = false;
-        res.redirect("/");
-    } else {
-        res.redirect('/noticias/login');
-    }
-
-});
+router.post('/noticias/login', administradorController.inicioSesion);
 
 router.get('/noticias/cerrar', function (req, res, next) {
     req.session.destroy();
@@ -47,13 +35,9 @@ router.get('/noticias/cerrar', function (req, res, next) {
 });
 //administrador
 router.get('/registro/administrador', function (req, res, next) {
-    var login = (req.session.user != undefined);
-    if (login == true) {
-        res.render('templates/app', {title: 'Principal', login: login,
-            fragmento: '../fragmentos/administrador/frmadmin', usuario: req.session.user});
-    } else {
-        res.render('templates/app', {title: 'Principal', login: login});
-    }
+    res.render('templates/app', {title: 'Registro de administrador', login: true,
+        fragmento: '../fragmentos/administrador/frmadmin'});
+
 });
 
 router.post('/registro/administrador', administradorController.guardar);
@@ -73,14 +57,5 @@ router.get('/test', function (req, res, next) {
         res.send(snapshot.val());
     });
 });
-router.get('/administracion/noticias', function (req, res, next) {
-    var login = (req.session.user != undefined);
-    if (login == true) {
-        res.render('templates/app', {title: 'Principal', login: login,
-            fragmento: '../fragmentos/noticias/frm_noticias'});
-    } else {
-        res.render('templates/app', {title: 'Principal', login: login});
-    }
-    //res.render('suma', { title: 'Sumar dos variables'});
-});
+router.get('/administracion/noticias', noticiaController.verNoticiasAdministrador);
 module.exports = router;
